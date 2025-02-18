@@ -15,7 +15,7 @@ export function shuffle<T>(array: T[]) {
 export function getEmojiUrl(emoji: string) {
   const code = [...emoji]
     .map((char) => char.codePointAt(0)!.toString(16))
-    .join("-");
+    .join('-');
 
   return `/emoji/${code}.svg`;
 }
