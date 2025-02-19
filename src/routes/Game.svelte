@@ -26,12 +26,20 @@
     resume();
   }
 
-  function resume() {
+  export function resume() {
+    console.log('this is resume triggered');
     playing = true;
     countDown();
-
     dispatch('play');
   }
+
+  export function quit() {
+    console.log('this is quit triggerd');
+    playing = false;
+    remaining = 0;
+    dispatch('lost');
+  }
+
   function createGrid(level: Level) {
     const copy = level.emojis.slice();
     const pairs: string[] = [];
@@ -43,9 +51,8 @@
       copy.splice(index, 1);
       pairs.push(emoji);
     }
-
     pairs.push(...pairs);
-    shuffle;
+    // shuffle;
     return shuffle(pairs);
   }
 

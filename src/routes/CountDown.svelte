@@ -1,6 +1,19 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   export let remaining: number;
   export let duration: number;
+  let durationDiv: HTMLDivElement;
+  console.log('Component script executed');
+  // $: console.log(
+  //   `Component re-rendered. Remaining: ${remaining}, Duration: ${duration}`
+  // );
+  // $: {
+  //   console.log('DOM updated with remaining:', remaining);
+  // }
+  onMount(() => {
+    console.log('Component mounted');
+  });
 </script>
 
 <div class="countdown">
@@ -13,7 +26,8 @@
     ></button
   >
 
-  <div class="duration">
+  <!-- --p is the css variable -->
+  <div class="duration" bind:this={durationDiv}>
     <div class="remaining" style="--p:{remaining / duration}"></div>
   </div>
 </div>

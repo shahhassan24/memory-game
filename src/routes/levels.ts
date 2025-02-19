@@ -7,7 +7,7 @@ export interface Level {
 
 export const levels: Level[] = [
   {
-    label: 'easy',
+    label: 'Easy',
     size: 4,
     duration: 60 * 1000,
     emojis:
@@ -17,7 +17,7 @@ export const levels: Level[] = [
   },
 
   {
-    label: 'medium',
+    label: 'Medium',
     size: 6,
     duration: 150 * 1000,
     emojis:
@@ -27,7 +27,7 @@ export const levels: Level[] = [
   },
 
   {
-    label: 'difficult',
+    label: 'Difficult',
     size: 8,
     duration: 300 * 1000,
     emojis:

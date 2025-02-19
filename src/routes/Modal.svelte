@@ -1,5 +1,6 @@
 <div class="modal-background">
   <div class="modal">
+    <h1 class="game-heading">Memory Game</h1>
     <slot />
   </div>
 </div>
@@ -15,5 +16,8 @@
     display: grid;
     place-items: center;
     z-index: 999;
+  }
+  .game-heading {
+    text-align: center;
   }
 </style>

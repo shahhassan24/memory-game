@@ -19,31 +19,54 @@
   onMount(() => {
     state = 'waiting';
   });
+  console.log('this is state message', stateMessages);
 </script>
 
-<Game
-  bind:this={game}
-  on:play={() => (state = 'playing')}
-  on:pause={() => (state = 'paused')}
-  on:win={() => (state = 'won')}
-  on:lose={() => (state = 'lost')}
-/>
+<div>
+  <h1 class="game-heading">Memory Card Game</h1>
+  <Game
+    bind:this={game}
+    on:play={() => (state = 'playing')}
+    on:pause={() => (state = 'paused')}
+    on:win={() => (state = 'won')}
+    on:lose={() => (state = 'lost')}
+  />
 
-{#if state !== 'playing'}
-  <Modal>
-    {#if state && state in stateMessages}
-      <p>{stateMessages[state]}</p>
-    {/if}
-
-    <div class="buttons">
-      {#if state === 'paused'}
-        <button>resume</button>
-        <button>quit</button>
-      {:else}
-        {#each levels as level}
-          <button on:click={() => game.startGame(level)}>{level.label}</button>
-        {/each}
+  {#if state !== 'playing'}
+    <Modal>
+      {#if state && state in stateMessages}
+        <div class="modal-title">
+          <h1>{stateMessages[state]}</h1>
+        </div>
       {/if}
-    </div>
-  </Modal>
-{/if}
+
+      <div class="buttons">
+        {#if state === 'paused'}
+          <button on:click={() => game.resume()}>resume</button>
+          <button on:click={() => game.quit()}>quit</button>
+        {:else}
+          {#each levels as level}
+            <button class="level-button" on:click={() => game.startGame(level)}
+              >{level.label}</button
+            >
+          {/each}
+        {/if}
+      </div>
+    </Modal>
+  {/if}
+</div>
+
+<style>
+  .level-button {
+    margin: 20px;
+    padding: 10px 20px;
+  }
+
+  .modal-title {
+    text-align: center;
+  }
+
+  .game-heading {
+    text-align: center;
+  }
+</style>
