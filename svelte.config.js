@@ -7,8 +7,7 @@ const config = {
 
   kit: {
     adapter: adapter({
-      runtime: 'nodejs18.x',
-      regions: ['iad1'], // or your preferred region
+      runtime: 'nodejs20.x'
     })
   }
 };
